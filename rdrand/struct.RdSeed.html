@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `RdRand` struct in crate `rdrand`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, RdRand">
+    <meta name="description" content="API documentation for the Rust `RdSeed` struct in crate `rdrand`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RdSeed">
 
-    <title>rdrand::RdRand - Rust</title>
+    <title>rdrand::RdSeed - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../main.css">
 
@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>rdrand</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.RdRand.html'>RdRand</a><a class='struct ' href='struct.RdSeed.html'>RdSeed</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='enum.Error.html'>Error</a></div>
+        <p class='location'><a href='index.html'>rdrand</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.RdRand.html'>RdRand</a><a class='struct current' href='struct.RdSeed.html'>RdSeed</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='enum.Error.html'>Error</a></div>
     </section>
 
     <nav class="sub">
@@ -41,23 +41,17 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rdrand</a>::<wbr><a class='struct' href=''>RdRand</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rdrand</a>::<wbr><a class='struct' href=''>RdSeed</a><wbr><a class='stability Experimental' title='The implementation has not been tested due to the lack of hardware supporting the feature'>Experimental</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]
             </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-158' href='../src/rdrand/lib.rs.html#41'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct RdRand(_);</pre><div class='docblock'><p>A cryptographically secure pseudo-random number generator.</p>
+        </span><a id='src-253' href='../src/rdrand/lib.rs.html#86'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct RdSeed(_);</pre><div class='docblock'><p>A random number generator suited to seed other pseudo-random generators.</p>
 
-<p>This generator is a viable replacement to any <a href="http://doc.rust-lang.org/std/rand/index.html">std::rand</a> generator, however, since nobody has
-audited Intel hardware yet, the usual disclaimers apply.</p>
-
-<p>It is much faster than <code>OsRng</code> (and slower than <code>StdRng</code>), but is only supported on more recent
-(since Ivy Bridge) Intel processors.</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../rdrand/struct.RdRand.html' title='rdrand::RdRand'>RdRand</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../rdrand/struct.RdRand.html' title='rdrand::RdRand'>RdRand</a>, <a class='enum' href='../rdrand/enum.Error.html' title='rdrand::Error'>Error</a>&gt;</code></h4>
-<div class='docblock'><p>Build a generator object. The function will only succeed if <code>rdrand</code> instruction can be
-successfully used.</p>
-</div><h4 id='method.next_u16' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.next_u16' class='fnname'>next_u16</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u16.html'>u16</a></code></h4>
+<p>This instruction currently is only available in Intel Broadwell processors.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../rdrand/struct.RdSeed.html' title='rdrand::RdSeed'>RdSeed</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../rdrand/struct.RdSeed.html' title='rdrand::RdSeed'>RdSeed</a>, <a class='enum' href='../rdrand/enum.Error.html' title='rdrand::Error'>Error</a>&gt;</code></h4>
+<h4 id='method.next_u16' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.next_u16' class='fnname'>next_u16</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u16.html'>u16</a></code></h4>
 <div class='docblock'><p>Generate a u16 value.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/rand/trait.Rng.html' title='rand::Rng'>Rng</a> for <a class='struct' href='../rdrand/struct.RdRand.html' title='rdrand::RdRand'>RdRand</a></code></h3><div class='impl-items'><h4 id='method.next_u32' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.next_u32' class='fnname'>next_u32</a>(&amp;mut self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/rand/trait.Rng.html' title='rand::Rng'>Rng</a> for <a class='struct' href='../rdrand/struct.RdSeed.html' title='rdrand::RdSeed'>RdSeed</a></code></h3><div class='impl-items'><h4 id='method.next_u32' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.next_u32' class='fnname'>next_u32</a>(&amp;mut self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
 <h4 id='method.next_u64' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.next_u64' class='fnname'>next_u64</a>(&amp;mut self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
 <h4 id='method.next_f32' class='tymethod'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#tymethod.next_f32' class='fnname'>next_f32</a>(&amp;mut self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a></code></h4>
 <h4 id='method.next_f64' class='tymethod'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#tymethod.next_f64' class='fnname'>next_f64</a>(&amp;mut self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code></h4>
