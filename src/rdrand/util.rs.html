@@ -110,7 +110,6 @@
 <span id="68">68</span>
 <span id="69">69</span>
 <span id="70">70</span>
-<span id="71">71</span>
 </pre><pre class='rust '>
 <span class='comment'>// Copyright © 2014, Simonas Kazlauskas &lt;git@kazlauskas.me&gt;</span>
 <span class='comment'>//</span>
@@ -133,12 +132,11 @@
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>any</span>(<span class='ident'>target_arch</span> <span class='op'>=</span> <span class='string'>&quot;x86&quot;</span>, <span class='ident'>target_arch</span> <span class='op'>=</span> <span class='string'>&quot;x86_64&quot;</span>))]</span>
 <span class='kw'>mod</span> <span class='ident'>imp</span> {
     <span class='attribute'>#[<span class='ident'>inline</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>cpuid</span>(<span class='ident'>ain</span> : <span class='ident'>u32</span>, <span class='ident'>cin</span> : <span class='ident'>u32</span>) <span class='op'>-&gt;</span> (<span class='ident'>u32</span>, <span class='ident'>u32</span>, <span class='ident'>u32</span>, <span class='ident'>u32</span>) {
-        <span class='kw'>let</span> (<span class='ident'>a</span>, <span class='ident'>b</span>, <span class='ident'>c</span>, <span class='ident'>d</span>);
+    <span class='kw'>fn</span> <span class='ident'>cpuid</span>(<span class='kw-2'>mut</span> <span class='ident'>a</span>: <span class='ident'>u32</span>, <span class='kw-2'>mut</span> <span class='ident'>c</span>: <span class='ident'>u32</span>) <span class='op'>-&gt;</span> (<span class='ident'>u32</span>, <span class='ident'>u32</span>, <span class='ident'>u32</span>, <span class='ident'>u32</span>) {
+        <span class='kw'>let</span> (<span class='ident'>b</span>, <span class='ident'>d</span>);
         <span class='kw'>unsafe</span> {
             <span class='macro'>asm</span><span class='macro'>!</span>(<span class='string'>&quot;cpuid&quot;</span>
-                :<span class='string'>&quot;={eax}&quot;</span>(<span class='ident'>a</span>), <span class='string'>&quot;={ebx}&quot;</span>(<span class='ident'>b</span>), <span class='string'>&quot;={ecx}&quot;</span>(<span class='ident'>c</span>), <span class='string'>&quot;={edx}&quot;</span>(<span class='ident'>d</span>)
-                :<span class='string'>&quot;{eax}&quot;</span>(<span class='ident'>ain</span>), <span class='string'>&quot;{ecx}&quot;</span>(<span class='ident'>cin</span>)
+                :<span class='string'>&quot;+{eax}&quot;</span>(<span class='ident'>a</span>), <span class='string'>&quot;={ebx}&quot;</span>(<span class='ident'>b</span>), <span class='string'>&quot;+{ecx}&quot;</span>(<span class='ident'>c</span>), <span class='string'>&quot;={edx}&quot;</span>(<span class='ident'>d</span>)
                 );
         }
         (<span class='ident'>a</span>, <span class='ident'>b</span>, <span class='ident'>c</span>, <span class='ident'>d</span>)
