@@ -14,5 +14,5 @@ build = "build.rs"
 rand = "0.3"
 unreachable = "0.1"
 
-[build-dependencies]
-llvm_build_utils = "0.2"
+[build-dependencies.llvm_build_utils]
+git = "https://github.com/nagisa/llvm_build_utils.rs.git"
