@@ -115,7 +115,7 @@ mod arch {
         let mut ret1: u32 = ::core::mem::uninitialized();
         let mut ret2: u32 = ::core::mem::uninitialized();
         if _rdrand32_step(&mut ret1) != 0 && _rdrand32_step(&mut ret2) != 0 {
-            *dest = (ret1 as u64) << 32 | (ret2 as u64);
+            *dest = (ret1 as u64) | (ret2 as u64) << 32;
             1
         } else {
             0
@@ -127,7 +127,7 @@ mod arch {
         let mut ret1: u32 = ::core::mem::uninitialized();
         let mut ret2: u32 = ::core::mem::uninitialized();
         if _rdseed32_step(&mut ret1) != 0 && _rdseed32_step(&mut ret2) != 0 {
-            *dest = (ret1 as u64) << 32 | (ret2 as u64);
+            *dest = (ret1 as u64) | (ret2 as u64) << 32;
             1
         } else {
             0
